@@ -1,4 +1,6 @@
-﻿namespace ElevatorSystem.Services
+﻿using ElevatorSystem.Models;
+
+namespace ElevatorSystem.Services
 {
     public class ElevatorController
     {
