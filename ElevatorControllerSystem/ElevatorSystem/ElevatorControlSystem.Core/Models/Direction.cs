@@ -1,4 +1,4 @@
-﻿namespace ElevatorSystem.Models
+﻿namespace ElevatorControlSystem.Core.Models
 {
     public enum Direction
     {

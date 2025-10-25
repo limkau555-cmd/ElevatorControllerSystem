@@ -1,27 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.Logging;
 
-namespace ElevatorSystem.Models
+namespace ElevatorControlSystem.Core.Models
 {
     public class Elevator
     {
-        public int Id { get; }
-        public int CurrentFloor { get; private set; } = 1;
-        public Direction Direction { get; private set; } = Direction.Idle;
-        public Queue<int> Destinations { get; } = new();
+        public int Id { get; set; }
+        public int CurrentFloor { get; set; } = 1;
+        public Direction Direction { get; set; } = Direction.Idle;
+        public Queue<int> Destinations { get; set; } = new();
 
-        public Elevator(int id)
+        private readonly ILogger _logger;
+
+        public Elevator(int id, ILogger logger)
         {
             Id = id;
+            _logger = logger;
         }
 
         public void AddDestination(int floor)
         {
             if (!Destinations.Contains(floor))
-                Destinations.Enqueue(floor);
+                Destinations.Enqueue(floor); ;
         }
 
         public void Move()
